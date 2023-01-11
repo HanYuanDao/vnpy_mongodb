@@ -63,9 +63,9 @@ class MongodbDatabase(BaseDatabase):
         self.tick_collection: Collection = self.db["tick_data"]
         self.tick_collection.create_index(
             [
-                ("exchange", ASCENDING),
                 ("symbol", ASCENDING),
                 ("datetime", ASCENDING),
+                ("exchange", ASCENDING),
             ],
             unique=True
         )
@@ -232,11 +232,11 @@ class MongodbDatabase(BaseDatabase):
         """读取TICK数据"""
         filter = {
             "symbol": symbol,
-            "exchange": exchange.value,
             "datetime": {
                 "$gte": start,
                 "$lte": end
-            }
+            },
+            "exchange": exchange.value
         }
 
         c: Cursor = self.tick_collection.find(filter)
