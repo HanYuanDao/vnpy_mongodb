@@ -49,15 +49,15 @@ class MongodbDatabase(BaseDatabase):
 
         # 初始化K线数据表
         self.bar_collection: Collection = self.db["bar_data"]
-        self.bar_collection.create_index(
-            [
-                ("exchange", ASCENDING),
-                ("symbol", ASCENDING),
-                ("interval", ASCENDING),
-                ("datetime", ASCENDING),
-            ],
-            unique=True
-        )
+        # self.bar_collection.create_index(
+        #     [
+        #         ("exchange", ASCENDING),
+        #         ("symbol", ASCENDING),
+        #         ("interval", ASCENDING),
+        #         ("datetime", ASCENDING),
+        #     ],
+        #     unique=True
+        # )
 
         # 初始化Tick数据表
         self.tick_collection: Collection = self.db["tick_data"]
