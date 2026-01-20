@@ -48,7 +48,7 @@ class MongodbDatabase(BaseDatabase):
         self.db: Database = self.client[self.database]
 
         # 初始化K线数据表
-        self.bar_collection: Collection = self.db["bar_data"]
+        self.bar_collection: Collection = self.db["vnpy_bar_data"]
         self.bar_collection.create_index(
             [
                 ("exchange", ASCENDING),
@@ -60,7 +60,7 @@ class MongodbDatabase(BaseDatabase):
         )
 
         # 初始化Tick数据表
-        self.tick_collection: Collection = self.db["tick_data"]
+        self.tick_collection: Collection = self.db["vnpy_tick_data"]
         self.tick_collection.create_index(
             [
                 ("exchange", ASCENDING),
@@ -71,7 +71,7 @@ class MongodbDatabase(BaseDatabase):
         )
 
         # 初始化K线概览表
-        self.bar_overview_collection: Collection = self.db["bar_overview"]
+        self.bar_overview_collection: Collection = self.db["vnpy_bar_overview"]
         self.bar_overview_collection.create_index(
             [
                 ("exchange", ASCENDING),
@@ -82,7 +82,7 @@ class MongodbDatabase(BaseDatabase):
         )
 
         # 初始化Tick概览表
-        self.tick_overview_collection: Collection = self.db["tick_overview"]
+        self.tick_overview_collection: Collection = self.db["vnpy_tick_overview"]
         self.tick_overview_collection.create_index(
             [
                 ("exchange", ASCENDING),
